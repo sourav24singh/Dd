@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You Divya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lato:wght@300;400&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            animation: bgAnimation 10s infinite alternate;
+        }
+
+        @keyframes bgAnimation {
+            0% { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+            100% { background: linear-gradient(135deg, #fad0c4, #ff9a9e); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            animation: textAnim 3s ease-in-out forwards;
+        }
+
+        @keyframes textAnim {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        p {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 2s 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .emoji {
+            font-size: 3rem;
+            display: inline-block;
+            animation: emojiAnim 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes emojiAnim {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .heart-cursor {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Heart_emoji_2015.svg') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            animation: heartCursorAnim 1s ease-in-out infinite;
+        }
+
+        @keyframes heartCursorAnim {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); }
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            background: #ffb6c1;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            animation: buttonAnim 3s ease-in-out infinite;
+        }
+
+        @keyframes buttonAnim {
+            0% { background: #ffb6c1; }
+            50% { background: #ff69b4; }
+            100% { background: #ffb6c1; }
+        }
+
+        .message {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 50px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+        }
+
+        .scrolling-text {
+            position: absolute;
+            bottom: 10%;
+            width: 100%;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            animation: scrollText 10s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scrolling-text">💖 Thank you, Divya, for being a part of my life 💖</div>
+
+    <h1>Hello, Divya! 💖</h1>
+    <p>You make my world brighter with your presence and love. 💫</p>
+
+    <button class="button" onclick="showMessage()">Click me for a special message 💌</button>
+    <div class="message">You are my sunshine, Divya. 🌞 I cherish every moment with you. 💖</div>
+
+    <div class="heart-cursor"></div>
+
+    <script>
+        // Display message when button is clicked
+        function showMessage() {
+            const message = document.querySelector('.message');
+            message.classList.toggle('show');
+        }
+
+        // Heart cursor effect
+        const heartCursor = document.querySelector('.heart-cursor');
+        document.addEventListener('mousemove', (e) => {
+            heartCursor.style.left = e.pageX - 15 + 'px';
+            heartCursor.style.top = e.pageY - 15 + 'px';
+        });
+
+        // Emoji animation interaction
+        const emojis = ['💖', '✨', '🌟', '💫'];
+        const emojiContainer = document.createElement('div');
+        document.body.appendChild(emojiContainer);
+        emojiContainer.classList.add('emoji-container');
+        setInterval(() => {
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            const emojiElement = document.createElement('span');
+            emojiElement.innerHTML = emoji;
+            emojiContainer.appendChild(emojiElement);
+            emojiElement.style.position = 'absolute';
+            emojiElement.style.left = Math.random() * 100 + 'vw';
+            emojiElement.style.top = Math.random() * 100 + 'vh';
+            emojiElement.style.fontSize = Math.random() * 3 + 2 + 'rem';
+            emojiElement.style.opacity = 1;
+            emojiElement.style.animation = 'emojiAnim 3s ease-in-out forwards';
+            setTimeout(() => emojiElement.remove(), 3000);
+        }, 1500);
+    </script>
+</body>
+</html>
